@@ -124,23 +124,36 @@ const MonthlyReport = () => {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="bg-white rounded-lg shadow-sm mb-6 border border-gray-200">
-          <div className="flex border-b border-gray-200">
-            {['overview', 'platforms', 'insights', 'october-plan'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 font-medium capitalize ${
-                  activeTab === tab
-                    ? 'border-b-2 border-indigo-600 text-indigo-600'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                {tab === 'october-plan' ? 'October Plan' : tab}
-              </button>
-            ))}
-          </div>
-        </div>
+<div className="bg-white rounded-lg shadow-sm mb-6 border border-gray-200">
+  <div
+    className="
+      flex 
+      border-b border-gray-200 
+      overflow-x-auto             /* enable horizontal scroll */
+      whitespace-nowrap           /* prevent wrapping */
+      scrollbar-hide              /* optional: hide scrollbar */
+      sm:overflow-visible         /* normal layout on bigger screens */
+    "
+  >
+    {['overview', 'platforms', 'insights', 'october-plan'].map((tab) => (
+      <button
+        key={tab}
+        onClick={() => setActiveTab(tab)}
+        className={`
+          px-6 py-3 font-medium capitalize flex-shrink-0 
+          ${
+            activeTab === tab
+              ? 'border-b-2 border-indigo-600 text-indigo-600'
+              : 'text-gray-600 hover:text-gray-900'
+          }
+        `}
+      >
+        {tab === 'october-plan' ? 'October Plan' : tab}
+      </button>
+    ))}
+  </div>
+</div>
+
 
         {/* Overview Tab */}
         {activeTab === 'overview' && (
