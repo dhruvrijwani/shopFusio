@@ -1,13 +1,2171 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fusio-monthly-report</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Fusio - October 2025 Performance Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-dark: #1a1a1a;
+            --secondary-dark: #2d2d2d;
+            --accent-rose: #FFE5E5;
+            --accent-blue: #E8F4F8;
+            --accent-green: #E8F8F0;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --text-light: #999;
+            --border-color: #e0e0e0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #f8f8f8 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 60px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 0L50 50L0 100" stroke="rgba(212,175,55,0.1)" stroke-width="1" fill="none"/><path d="M50 0L100 50L50 100" stroke="rgba(212,175,55,0.1)" stroke-width="1" fill="none"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .brand-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .report-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .report-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 30px;
+        }
+
+        .report-meta {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meta-item::before {
+            content: '●';
+            color: var(--primary-gold);
+        }
+
+        /* Executive Summary Banner */
+        .exec-summary-banner {
+            background: white;
+            margin: -40px 20px 40px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow-hover);
+            position: relative;
+            z-index: 10;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .summary-card {
+            text-align: center;
+            padding: 25px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--primary-gold);
+        }
+
+        .summary-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .summary-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .summary-change {
+            font-size: 0.9rem;
+            margin-top: 8px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .change-positive {
+            background: var(--accent-green);
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .change-negative {
+            background: #FEE;
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        .change-neutral {
+            background: #F0F0F0;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #FFD700 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        /* Table Styles */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 25px 0;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .data-table thead {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            color: white;
+        }
+
+        .data-table th {
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .data-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+
+        .data-table tbody tr:hover {
+            background: #f8f8f8;
+            transform: scale(1.01);
+        }
+
+        .data-table td {
+            padding: 18px 20px;
+            color: var(--text-primary);
+        }
+
+        .data-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        /* Metric Badge */
+        .metric-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .badge-success {
+            background: var(--accent-green);
+            color: var(--success);
+        }
+
+        .badge-warning {
+            background: #FEF3C7;
+            color: var(--warning);
+        }
+
+        .badge-danger {
+            background: #FEE;
+            color: var(--danger);
+        }
+
+        .badge-info {
+            background: var(--accent-blue);
+            color: #0891b2;
+        }
+
+        /* Platform Cards */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .platform-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--card-shadow);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-gold) 0%, #FFD700 100%);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--primary-gold);
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .platform-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+        }
+
+        .platform-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .platform-stats {
+            display: grid;
+            gap: 20px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        /* Insight Cards */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .insight-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid var(--primary-gold);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .insight-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .insight-icon {
+            font-size: 1.5rem;
+        }
+
+        .insight-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Challenge Card */
+        .challenge-card {
+            background: linear-gradient(135deg, #FEE 0%, #FFE5E5 100%);
+            border-left-color: var(--danger);
+            border: 2px solid var(--danger);
+        }
+
+        .opportunity-card {
+            background: linear-gradient(135deg, var(--accent-green) 0%, #D1FAE5 100%);
+            border-left-color: var(--success);
+            border: 2px solid var(--success);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin: 20px 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .progress-bar-wrapper {
+            width: 100%;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-gold) 0%, #FFD700 100%);
+            border-radius: 10px;
+            transition: width 1.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Recommendations */
+        .recommendation-list {
+            display: grid;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .recommendation-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-gold);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .recommendation-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .recommendation-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #FFD700 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .recommendation-content h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .recommendation-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .report-footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-note {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 20px;
+        }
+
+        /* Tabs */
+        .tab-container {
+            margin: 30px 0;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .tab-button:hover {
+            border-color: var(--primary-gold);
+            color: var(--primary-dark);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #FFD700 100%);
+            color: white;
+            border-color: var(--primary-gold);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Key Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .highlight-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--primary-gold);
+        }
+
+        .highlight-emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .highlight-text {
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .report-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .summary-grid,
+            .platform-grid,
+            .insights-grid,
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 40px 20px 60px;
+            }
+
+            .exec-summary-banner {
+                margin: -30px 20px 30px;
+                padding: 25px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .data-table {
+                font-size: 0.85rem;
+            }
+
+            .tab-buttons {
+                flex-direction: column;
+            }
+
+            .tab-button {
+                width: 100%;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .card, .platform-card, .insight-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            .header {
+                background: var(--primary-dark);
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+
+        /* Lists */
+        .styled-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .styled-list li {
+            padding: 12px 0 12px 30px;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .styled-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .success-list li::before {
+            content: '✓';
+            color: var(--success);
+        }
+
+        .warning-list li::before {
+            content: '✗';
+            color: var(--danger);
+        }
+
+        /* Comparison Cards */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .comparison-header {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-gold);
+        }
+
+        @media (max-width: 968px) {
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="brand-logo">SHOP FUSIO</div>
+            <h1 class="report-title">October 2025<br>Performance Report</h1>
+            <div class="report-meta">
+                <div class="meta-item">Report Period: October 1-31, 2025</div>
+                <div class="meta-item">Brand: Ecommerce Jewellery</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Executive Summary Banner -->
+    <div class="container">
+        <div class="exec-summary-banner">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 10px; color: var(--primary-dark);">Executive Summary</h2>
+            <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 25px;">October delivered strong performance with 96.5% revenue target achievement despite facing returns challenges. Meta campaigns dominated with ₹11.87L revenue at 2.31 ROAS.</p>
+            
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-number">₹11.87L</div>
+                    <div class="summary-label">Total Revenue</div>
+                    <div class="summary-change change-neutral">96.5% of Target</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-number">721</div>
+                    <div class="summary-label">Total Orders</div>
+                    <div class="summary-change change-positive">+Strong</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-number">2.25x</div>
+                    <div class="summary-label">Overall ROAS</div>
+                    <div class="summary-change change-positive">Healthy</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-number">₹1,650</div>
+                    <div class="summary-label">Average AOV</div>
+                    <div class="summary-change change-positive">↑ 17.9% vs Sept</div>
+                </div>
+            </div>
+
+            <!-- Key Highlights -->
+            <div style="margin-top: 40px;">
+                <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: var(--primary-dark);">Key Highlights</h3>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-emoji">🎯</div>
+                        <div class="highlight-text">Retargeting campaigns significantly outperformed BAU structures</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-emoji">⚠️</div>
+                        <div class="highlight-text">Returns & cancellations at 15.45% impacting profitability</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-emoji">📈</div>
+                        <div class="highlight-text">New LAL audience quickly met performance benchmarks</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-emoji">💎</div>
+                        <div class="highlight-text">Two products showing festive season potential</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Overview Section -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Performance Overview</h2>
+                <p class="section-subtitle">Comprehensive breakdown of October's marketing performance across all platforms</p>
+            </div>
+
+            <!-- Platform Cards -->
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon" style="background: linear-gradient(135deg, #4267B2 0%, #5578C7 100%); color: white;">M</div>
+                        <div>
+                            <div class="platform-name">Meta</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Facebook & Instagram Ads</div>
+                        </div>
+                    </div>
+                    <div class="platform-stats">
+                        <div class="stat-row">
+                            <span class="stat-label">Ad Spend</span>
+                            <span class="stat-value">₹5,13,447</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Orders</span>
+                            <span class="stat-value">721</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Revenue</span>
+                            <span class="stat-value">₹11,87,043</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">ROAS</span>
+                            <span class="stat-value" style="color: var(--success);">2.31x</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <span class="metric-badge badge-success">Primary Revenue Driver</span>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon" style="background: linear-gradient(135deg, #4285F4 0%, #34A853 100%); color: white;">G</div>
+                        <div>
+                            <div class="platform-name">Google</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Search & Display Ads</div>
+                        </div>
+                    </div>
+                    <div class="platform-stats">
+                        <div class="stat-row">
+                            <span class="stat-label">Ad Spend</span>
+                            <span class="stat-value">₹13,375</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Orders</span>
+                            <span class="stat-value">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Revenue</span>
+                            <span class="stat-value">₹0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">ROAS</span>
+                            <span class="stat-value" style="color: var(--text-secondary);">0.00x</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <span class="metric-badge badge-info">Brand Building Focus</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Table -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">📊</span>
+                    Target vs Actual Performance
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Projected</th>
+                            <th>Actual</th>
+                            <th>Achievement</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Spend</strong></td>
+                            <td>₹5,20,800</td>
+                            <td>₹5,26,822</td>
+                            <td>101.2%</td>
+                            <td><span class="metric-badge badge-success">On Target</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Orders</strong></td>
+                            <td>726</td>
+                            <td>721</td>
+                            <td>99.3%</td>
+                            <td><span class="metric-badge badge-success">Near Target</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Revenue</strong></td>
+                            <td>₹12,30,133</td>
+                            <td>₹11,87,043</td>
+                            <td>96.5%</td>
+                            <td><span class="metric-badge badge-warning">Below Target</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROAS</strong></td>
+                            <td>2.36x</td>
+                            <td>2.25x</td>
+                            <td>95.3%</td>
+                            <td><span class="metric-badge badge-warning">Below Target</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="progress-container" style="margin-top: 30px;">
+                    <div class="progress-label">
+                        <span>Revenue Achievement</span>
+                        <span style="color: var(--primary-gold); font-weight: 700;">96.5%</span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                        <div class="progress-bar" style="width: 96.5%;"></div>
+                    </div>
+                    <p style="margin-top: 15px; color: var(--text-secondary); font-size: 0.95rem;">
+                        <strong>Shortfall Analysis:</strong> Revenue fell short by ₹43,090 (3.5%), primarily due to 15.45% returns and cancellations. After accounting for returns, the actual retention was strong.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meta Deep Dive Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Meta Platform Deep Dive</h2>
+                <p class="section-subtitle">Detailed analysis of Facebook & Instagram campaign performance, audience insights, and creative testing</p>
+            </div>
+
+            <!-- Campaign Performance -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🎯</span>
+                    Campaign Performance & Structure
+                </div>
+
+                <div class="comparison-container">
+                    <div class="comparison-card" style="border-top: 5px solid var(--success);">
+                        <div class="comparison-header" style="border-color: var(--success); color: var(--success);">✓ What Worked</div>
+                        <ul class="styled-list success-list">
+                            <li><strong>Retargeting Campaigns:</strong> Delivered strongest ROAS and most consistent performance</li>
+                            <li><strong>Catalogue Ads:</strong> Successfully driving product discovery and conversions</li>
+                            <li><strong>LAL Audiences:</strong> New lookalike audiences quickly met minimum benchmarks</li>
+                            <li><strong>Audience Consolidation:</strong> Merging into 3 top audiences improved efficiency</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card" style="border-top: 5px solid var(--danger);">
+                        <div class="comparison-header" style="border-color: var(--danger); color: var(--danger);">✗ What Didn't Work</div>
+                        <ul class="styled-list warning-list">
+                            <li><strong>BAU Diwali Campaign:</strong> Broad audience campaign couldn't sustain performance</li>
+                            <li><strong>High-AOV Necklaces:</strong> Most premium necklace products underperformed</li>
+                            <li><strong>Creative Consistency:</strong> Results not stable enough for definitive conclusions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="background: var(--accent-blue); padding: 25px; border-radius: 12px; margin-top: 25px;">
+                    <h4 style="font-weight: 700; margin-bottom: 12px; color: var(--primary-dark);">🏆 Top Performing Creatives</h4>
+                    <div style="display: grid; gap: 12px;">
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <strong style="color: var(--primary-gold);">1. The Choker Necklace</strong> - Emerged as potential top performer for the month
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <strong style="color: var(--primary-gold);">2. Suryakamal Earrings</strong> - Strong engagement and conversion potential
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.95rem; color: var(--text-secondary);">
+                        <em>Note: Creative performance showed variability. Extended testing period recommended for definitive insights.</em>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Audience Insights -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">👥</span>
+                    Audience Testing & Optimization
+                </div>
+
+                <div style="background: linear-gradient(135deg, var(--accent-green) 0%, #D1FAE5 100%); padding: 30px; border-radius: 15px; margin-bottom: 25px;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: var(--primary-dark);">Key Audience Insights</h3>
+                    <ul class="styled-list">
+                        <li><strong>Consolidated Strategy:</strong> Merged budgets from multiple ad sets into 3 top-performing audiences based on comparative performance</li>
+                        <li><strong>Retargeting Dominance:</strong> Retargeting audience stays consistent with different catalogue sets, especially high-AOV products</li>
+                        <li><strong>New LAL Success:</strong> Introduced Lookalike (LAL) audience performed strongly and quickly met minimum benchmark</li>
+                        <li><strong>Testing Scope:</strong> Tested direct jewellery, indirect jewellery, retargeting, and lookalike audiences</li>
+                    </ul>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Audience Type</th>
+                            <th>Performance</th>
+                            <th>Scalability</th>
+                            <th>November Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Retargeting</strong></td>
+                            <td><span class="metric-badge badge-success">Excellent</span></td>
+                            <td>High</td>
+                            <td>Scale Budget +20%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lookalike (LAL)</strong></td>
+                            <td><span class="metric-badge badge-success">Strong</span></td>
+                            <td>Medium-High</td>
+                            <td>Continue Testing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Direct Jewellery</strong></td>
+                            <td><span class="metric-badge badge-warning">Moderate</span></td>
+                            <td>Medium</td>
+                            <td>Optimize & Monitor</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Broad (BAU)</strong></td>
+                            <td><span class="metric-badge badge-danger">Poor</span></td>
+                            <td>Low</td>
+                            <td>Pause/Restructure</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Top Performing Ad Creatives -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🎨</span>
+                    Top Performing Ad Creatives
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7;">
+                    Analysis of the best-performing ad creatives in October, showcasing high CTR, competitive CPC, and strong ROAS performance.
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px;">
+                    <!-- Creative 1: Polki Chakra Choker -->
+                    <div style="background: white; border-radius: 15px; overflow: hidden; border: 2px solid var(--border-color); transition: all 0.3s ease; box-shadow: var(--card-shadow);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--card-shadow-hover)'; this.style.borderColor='var(--primary-gold)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--card-shadow)'; this.style.borderColor='var(--border-color)'">
+                        <div style="position: relative; background: #f8f8f8; overflow: hidden;">
+                            <img src="./fusio1.png" alt="Polki Chakra Choker Creative" style="width: 100%; height: auto; display: block;">
+                            <div style="position: absolute; top: 15px; right: 15px; background: var(--primary-gold); color: white; padding: 8px 15px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">
+                                #1 Creative
+                            </div>
+                        </div>
+                        <div style="padding: 25px;">
+                            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: var(--primary-dark);">Polki Chakra Choker</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6;">Festive-themed creative showcasing radiant choker necklace with sophisticated styling.</p>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;">
+                                <div style="text-align: center; padding: 15px; background: var(--accent-green); border-radius: 10px;">
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; font-weight: 600;">CTR</div>
+                                    <div style="font-size: 1.8rem; font-weight: 800; color: var(--success);">9.05%</div>
+                                </div>
+                                <div style="text-align: center; padding: 15px; background: var(--accent-blue); border-radius: 10px;">
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; font-weight: 600;">CPC</div>
+                                    <div style="font-size: 1.8rem; font-weight: 800; color: #0891b2;">₹9.43</div>
+                                </div>
+                                <div style="text-align: center; padding: 15px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border-radius: 10px;">
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; font-weight: 600;">ROAS</div>
+                                    <div style="font-size: 1.8rem; font-weight: 800; color: var(--warning);">2.05x</div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 20px; padding: 15px; background: var(--accent-green); border-radius: 10px; border-left: 4px solid var(--success);">
+                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+                                    <strong style="color: var(--success);">High Engagement:</strong> Exceptional 9.05% CTR indicates strong audience resonance with festive positioning.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creative 2: Suryakamal Earrings -->
+                    <div style="background: white; border-radius: 15px; overflow: hidden; border: 2px solid var(--border-color); transition: all 0.3s ease; box-shadow: var(--card-shadow);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--card-shadow-hover)'; this.style.borderColor='var(--primary-gold)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--card-shadow)'; this.style.borderColor='var(--border-color)'">
+                        <div style="position: relative; background: #f8f8f8; overflow: hidden;">
+                            <img src="./fusio2.png" alt="Suryakamal Earrings Creative" style="width: 100%; height: auto; display: block;">
+                            <div style="position: absolute; top: 15px; right: 15px; background: #C0C0C0; color: white; padding: 8px 15px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">
+                                #2 Creative
+                            </div>
+                        </div>
+                        <div style="padding: 25px;">
+                            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: var(--primary-dark);">Suryakamal Earrings</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6;">Elegant luxury positioning with pearl accents and 22K gold plated craftsmanship.</p>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;">
+                                <div style="text-align: center; padding: 15px; background: var(--accent-green); border-radius: 10px;">
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; font-weight: 600;">CTR</div>
+                                    <div style="font-size: 1.8rem; font-weight: 800; color: var(--success);">7.38%</div>
+                                </div>
+                                <div style="text-align: center; padding: 15px; background: var(--accent-blue); border-radius: 10px;">
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; font-weight: 600;">CPC</div>
+                                    <div style="font-size: 1.8rem; font-weight: 800; color: #0891b2;">₹6.93</div>
+                                </div>
+                                <div style="text-align: center; padding: 15px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border-radius: 10px;">
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; font-weight: 600;">ROAS</div>
+                                    <div style="font-size: 1.8rem; font-weight: 800; color: var(--warning);">2.12x</div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 20px; padding: 15px; background: var(--accent-blue); border-radius: 10px; border-left: 4px solid #0891b2;">
+                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+                                    <strong style="color: #0891b2;">Best Efficiency:</strong> Lower CPC (₹6.93) with highest ROAS (2.12x) demonstrates excellent cost efficiency.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Performance Comparison -->
+                <div style="margin-top: 40px;">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; color: var(--primary-dark);">📊 Creative Performance Comparison</h4>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Creative</th>
+                                <th>CTR</th>
+                                <th>CPC</th>
+                                <th>ROAS</th>
+                                <th>Key Strength</th>
+                                <th>Recommendation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Polki Chakra Choker</strong></td>
+                                <td><span class="metric-badge badge-success">9.05%</span></td>
+                                <td>₹9.43</td>
+                                <td><span style="color: var(--warning); font-weight: 700;">2.05x</span></td>
+                                <td>Highest engagement rate</td>
+                                <td>Scale for awareness campaigns</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Suryakamal Earrings</strong></td>
+                                <td><span class="metric-badge badge-success">7.38%</span></td>
+                                <td><span style="color: var(--success); font-weight: 700;">₹6.93</span></td>
+                                <td><span class="metric-badge badge-success">2.12x</span></td>
+                                <td>Best ROAS & lowest CPC</td>
+                                <td>Scale for conversion campaigns</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="background: linear-gradient(135deg, var(--accent-rose) 0%, #FFE5E5 100%); padding: 25px; border-radius: 12px; margin-top: 30px; border: 2px solid #f87171;">
+                    <h4 style="font-weight: 700; margin-bottom: 12px; color: #dc2626;">🎯 Strategic Creative Insight</h4>
+                    <ul class="styled-list" style="margin: 0;">
+                        <li><strong>Polki Chakra Choker:</strong> Exceptional CTR (9.05%) makes it ideal for top-of-funnel awareness and audience building campaigns</li>
+                        <li><strong>Suryakamal Earrings:</strong> Superior ROAS (2.12x) and lower CPC (₹6.93) position it as the conversion powerhouse</li>
+                        <li><strong>Creative Strategy:</strong> Deploy both creatives in tandem - Choker for reach/engagement, Earrings for retargeting/conversion</li>
+                        <li><strong>November Action:</strong> Create 3-5 variations of each winning creative to prevent ad fatigue while maintaining performance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Top Best-Selling Products -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🏆</span>
+                    Top Best-Selling Products
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 25px; line-height: 1.7;">
+                    Product performance analysis for October 2025, showcasing the top revenue-generating items in the earrings category.
+                </p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Total Sales (₹)</th>
+                            <th>Share</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: var(--primary-gold);">#1</strong></td>
+                            <td><strong>Zirconia Pearl Drop Earrings</strong></td>
+                            <td>Earrings</td>
+                            <td><strong>₹76,279.00</strong></td>
+                            <td><span class="metric-badge badge-success">6.43%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #C0C0C0;">#2</strong></td>
+                            <td><strong>Embossed Floral Earrings</strong></td>
+                            <td>Earrings</td>
+                            <td><strong>₹50,749.00</strong></td>
+                            <td><span class="metric-badge badge-success">4.28%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #CD7F32;">#3</strong></td>
+                            <td><strong>Chaand Earrings</strong></td>
+                            <td>Earrings</td>
+                            <td><strong>₹45,998.75</strong></td>
+                            <td><span class="metric-badge badge-success">3.88%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>#4</strong></td>
+                            <td>Three Flower Multi Chain Earrings</td>
+                            <td>Earrings</td>
+                            <td>₹40,225.00</td>
+                            <td><span class="metric-badge badge-info">3.39%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>#5</strong></td>
+                            <td>Button Earrings</td>
+                            <td>Earrings</td>
+                            <td>₹37,114.00</td>
+                            <td><span class="metric-badge badge-info">3.13%</span></td>
+                        </tr>
+                        <tr style="background: var(--accent-green); font-weight: 700;">
+                            <td colspan="3"><strong>TOTAL TOP 5 PRODUCTS</strong></td>
+                            <td><strong>₹2,50,365.75</strong></td>
+                            <td><strong>21.09%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Pie Chart Visualization -->
+                <div style="margin-top: 40px;">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 25px; color: var(--primary-dark); text-align: center;">Revenue Distribution by Product</h4>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                        <!-- Pie Chart -->
+                        <div style="display: flex; justify-content: center;">
+                            <svg viewBox="0 0 400 400" style="max-width: 350px; width: 100%; height: auto;">
+                                <!-- Background circle -->
+                                <circle cx="200" cy="200" r="150" fill="#f8f8f8" stroke="#e0e0e0" stroke-width="2"/>
+                                
+                                <!-- Pie slices - recalculated based on actual percentages -->
+                                <!-- Other Products: 78.91% (284.07°) - Starting from top, going clockwise -->
+                                <path d="M 200 200 L 200 50 A 150 150 0 1 1 237.82 56.82 Z" 
+                                      fill="#D1D5DB" stroke="white" stroke-width="3"
+                                      style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1))"/>
+                                
+                                <!-- Slice 1: Zirconia Pearl Drop - 6.43% (23.13°) -->
+                                <path d="M 200 200 L 237.82 56.82 A 150 150 0 0 1 281.04 92.96 Z" 
+                                      fill="#4285F4" stroke="white" stroke-width="3" 
+                                      style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1))"/>
+                                
+                                <!-- Slice 2: Embossed Floral - 4.28% (15.39°) -->
+                                <path d="M 200 200 L 281.04 92.96 A 150 150 0 0 1 307.04 122.96 Z" 
+                                      fill="#34A853" stroke="white" stroke-width="3"
+                                      style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1))"/>
+                                
+                                <!-- Slice 3: Chaand - 3.88% (13.95°) -->
+                                <path d="M 200 200 L 307.04 122.96 A 150 150 0 0 1 327.04 152.96 Z" 
+                                      fill="#FBBC04" stroke="white" stroke-width="3"
+                                      style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1))"/>
+                                
+                                <!-- Slice 4: Three Flower - 3.39% (12.20°) -->
+                                <path d="M 200 200 L 327.04 152.96 A 150 150 0 0 1 340.24 180.24 Z" 
+                                      fill="#EA4335" stroke="white" stroke-width="3"
+                                      style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1))"/>
+                                
+                                <!-- Slice 5: Button - 3.13% (11.26°) -->
+                                <path d="M 200 200 L 340.24 180.24 A 150 150 0 0 1 348.50 205.50 Z" 
+                                      fill="#9334E9" stroke="white" stroke-width="3"
+                                      style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1))"/>
+                                
+                                <!-- Center circle for donut effect -->
+                                <circle cx="200" cy="200" r="80" fill="white"/>
+                                <text x="200" y="195" text-anchor="middle" font-size="24" font-weight="700" fill="#1a1a1a">Top 5</text>
+                                <text x="200" y="225" text-anchor="middle" font-size="32" font-weight="800" fill="#D4AF37">21.1%</text>
+                            </svg>
+                        </div>
+                        
+                        <!-- Legend -->
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: white; border-radius: 8px; border-left: 4px solid #D1D5DB;">
+                                <div style="width: 24px; height: 24px; background: #D1D5DB; border-radius: 4px; flex-shrink: 0;"></div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--primary-dark); font-size: 0.95rem;">Other Products</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.85rem;">₹9,36,677 • 78.91%</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: white; border-radius: 8px; border-left: 4px solid #4285F4;">
+                                <div style="width: 24px; height: 24px; background: #4285F4; border-radius: 4px; flex-shrink: 0;"></div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--primary-dark); font-size: 0.95rem;">Zirconia Pearl Drop</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.85rem;">₹76,279 • 6.43%</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: white; border-radius: 8px; border-left: 4px solid #34A853;">
+                                <div style="width: 24px; height: 24px; background: #34A853; border-radius: 4px; flex-shrink: 0;"></div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--primary-dark); font-size: 0.95rem;">Embossed Floral</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.85rem;">₹50,749 • 4.28%</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: white; border-radius: 8px; border-left: 4px solid #FBBC04;">
+                                <div style="width: 24px; height: 24px; background: #FBBC04; border-radius: 4px; flex-shrink: 0;"></div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--primary-dark); font-size: 0.95rem;">Chaand Earrings</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.85rem;">₹45,999 • 3.88%</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: white; border-radius: 8px; border-left: 4px solid #EA4335;">
+                                <div style="width: 24px; height: 24px; background: #EA4335; border-radius: 4px; flex-shrink: 0;"></div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--primary-dark); font-size: 0.95rem;">Three Flower Multi Chain</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.85rem;">₹40,225 • 3.39%</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: white; border-radius: 8px; border-left: 4px solid #9334E9;">
+                                <div style="width: 24px; height: 24px; background: #9334E9; border-radius: 4px; flex-shrink: 0;"></div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--primary-dark); font-size: 0.95rem;">Button Earrings</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.85rem;">₹37,114 • 3.13%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--accent-blue); padding: 25px; border-radius: 12px; margin-top: 30px; border: 2px solid #0891b2;">
+                    <h4 style="font-weight: 700; margin-bottom: 12px; color: #0891b2;">💡 Key Product Insight</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        While the top 5 earring products account for <strong>21.1% of total revenue (₹2.5L)</strong>, 
+                        the remaining <strong>78.9% (₹9.4L) comes from other products</strong> in the catalog. 
+                        This indicates a well-diversified product portfolio. Zirconia Pearl Drop Earrings leads the individual products with 6.43% share. 
+                        Opportunity exists to identify and promote more bestsellers from the "Other Products" category to create additional hero products.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Product Performance -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">💎</span>
+                    Product Performance Analysis
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 25px; line-height: 1.7;">
+                    Tested multiple high-AOV products, particularly premium necklaces. While most underperformed expectations, two products showed promise and received early festive season orders.
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: var(--accent-green); padding: 25px; border-radius: 12px; border: 2px solid var(--success);">
+                        <h4 style="font-weight: 700; margin-bottom: 10px; color: var(--primary-dark);">✓ Polki Chakra Choker</h4>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--success); margin: 10px 0;">3 Orders</div>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Showing potential during festive season. Continue pushing to evaluate traction.</p>
+                    </div>
+
+                    <div style="background: var(--accent-green); padding: 25px; border-radius: 12px; border: 2px solid var(--success);">
+                        <h4 style="font-weight: 700; margin-bottom: 10px; color: var(--primary-dark);">✓ Green Quartz Necklace</h4>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--success); margin: 10px 0;">4 Orders</div>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Better performance than other premium items. Potential winner candidate.</p>
+                    </div>
+                </div>
+
+                <div style="background: #FEF3C7; padding: 25px; border-radius: 12px; margin-top: 25px; border: 2px solid var(--warning);">
+                    <h4 style="font-weight: 700; margin-bottom: 12px; color: var(--warning);">⚠️ Strategy Note</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        High-AOV necklaces require careful curation and positioning. We'll continue monitoring these two products through the festive season to determine if they can gain more traction beyond the holiday period. Most other premium products failed to achieve expected performance levels.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Ad Optimization -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">⚡</span>
+                    Ad Optimization for Revenue Focus
+                </div>
+
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <div class="insight-title">
+                            <span class="insight-icon">🎯</span>
+                            Budget Reallocation
+                        </div>
+                        <div class="insight-content">
+                            Paused underperforming audiences and ads across campaigns to maximize overall revenue. Reallocated resources efficiently to top performers.
+                        </div>
+                    </div>
+
+                    <div class="insight-card">
+                        <div class="insight-title">
+                            <span class="insight-icon">📊</span>
+                            Performance Tiers
+                        </div>
+                        <div class="insight-content">
+                            Created clear performance tiers: Scale (top 20%), Optimize (middle 50%), Pause (bottom 30%) for systematic budget management.
+                        </div>
+                    </div>
+
+                    <div class="insight-card">
+                        <div class="insight-title">
+                            <span class="insight-icon">💰</span>
+                            AOV Improvement
+                        </div>
+                        <div class="insight-content">
+                            Achieved ₹1,650 AOV (up from ₹1,400 in September) through strategic high-value product emphasis and catalogue optimization.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Platform Section -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Google Platform Insights</h2>
+                <p class="section-subtitle">Strategic brand building investment and audience testing analysis</p>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🔍</span>
+                    Google Ads Strategy & Performance
+                </div>
+
+                <div style="background: var(--accent-blue); padding: 30px; border-radius: 15px; margin-bottom: 25px;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: var(--primary-dark);">Investment Overview</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 20px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-dark);">₹13,375</div>
+                            <div style="color: var(--text-secondary); font-weight: 600; margin-top: 5px;">Total Spend</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2.5rem; font-weight: 800; color: var(--text-secondary);">0</div>
+                            <div style="color: var(--text-secondary); font-weight: 600; margin-top: 5px;">Direct Orders</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2.5rem; font-weight: 800; color: var(--text-secondary);">0.00x</div>
+                            <div style="color: var(--text-secondary); font-weight: 600; margin-top: 5px;">Direct ROAS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; color: var(--primary-dark);">Strategic Rationale</h4>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 25px;">
+                    While Google campaigns generated no direct conversions in October, the investment served a strategic purpose in brand awareness building and creating momentum that contributed to Meta's order growth through the halo effect. This cross-platform impact is difficult to measure directly but is evidenced by improved overall order volume.
+                </p>
+
+                <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; color: var(--primary-dark);">PMax Campaign Testing</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Audience Segment</th>
+                            <th>Test Status</th>
+                            <th>Performance</th>
+                            <th>Learning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Full Product Feed</td>
+                            <td><span class="metric-badge badge-info">Tested</span></td>
+                            <td>Low</td>
+                            <td>Broad targeting diluted focus</td>
+                        </tr>
+                        <tr>
+                            <td>Competitor ATC Audiences</td>
+                            <td><span class="metric-badge badge-warning">Tested</span></td>
+                            <td>Below Expectation</td>
+                            <td>High-intent hypothesis not validated</td>
+                        </tr>
+                        <tr>
+                            <td>Various Combinations</td>
+                            <td><span class="metric-badge badge-info">Tested</span></td>
+                            <td>Varied</td>
+                            <td>No clear winner identified yet</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="background: #FEF3C7; padding: 25px; border-radius: 12px; margin-top: 25px; border-left: 5px solid var(--warning);">
+                    <h4 style="font-weight: 700; margin-bottom: 12px; color: var(--warning);">November Strategy</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                        Continue testing with smaller budgets (≤₹15,000) while identifying scalable opportunities. The goal is to find a Google strategy that demonstrates clear sales potential before scaling investment.
+                    </p>
+                    <ul class="styled-list">
+                        <li>Maintain minimal test budgets for exploration</li>
+                        <li>Focus on audiences showing early sales signals</li>
+                        <li>Scale only when direct conversion path is proven</li>
+                        <li>Continue monitoring Meta attribution from Google touchpoints</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discount Codes Performance Section -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Discount Codes Performance</h2>
+                <p class="section-subtitle">A sneak peek overview of discount codes used for sales in October 2025</p>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🎫</span>
+                    Discount Code Usage & Revenue Impact
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 25px; line-height: 1.7;">
+                    Analysis of promotional discount codes and their contribution to October's total sales revenue.
+                </p>
+
+                <!-- Discount Codes Visualization -->
+                <div style="display: grid; gap: 20px;">
+                    <!-- Welcome10 -->
+                    <div style="background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); padding: 25px; border-radius: 15px; border-left: 5px solid #3B82F6; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div>
+                                <div style="font-size: 1.3rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 5px;">Welcome10</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">Discount code • Fixed amount • None</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 2rem; font-weight: 800; color: #3B82F6;">₹3,64,595</div>
+                                <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 5px;">47.2% of discount sales</div>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 10px; background: rgba(59, 130, 246, 0.2); border-radius: 10px; overflow: hidden;">
+                            <div style="width: 100%; height: 100%; background: #3B82F6; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- BIG30 -->
+                    <div style="background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); padding: 25px; border-radius: 15px; border-left: 5px solid #22C55E; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div>
+                                <div style="font-size: 1.3rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 5px;">BIG30</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">Manual • Fixed amount • None</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 2rem; font-weight: 800; color: #22C55E;">₹2,56,435</div>
+                                <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 5px;">33.2% of discount sales</div>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 10px; background: rgba(34, 197, 94, 0.2); border-radius: 10px; overflow: hidden;">
+                            <div style="width: 70.3%; height: 100%; background: #22C55E; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- SALE20 -->
+                    <div style="background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); padding: 25px; border-radius: 15px; border-left: 5px solid #F59E0B; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div>
+                                <div style="font-size: 1.3rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 5px;">SALE20</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">Manual • Fixed amount • None</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 2rem; font-weight: 800; color: #F59E0B;">₹1,23,154</div>
+                                <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 5px;">15.9% of discount sales</div>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 10px; background: rgba(245, 158, 11, 0.2); border-radius: 10px; overflow: hidden;">
+                            <div style="width: 33.8%; height: 100%; background: #F59E0B; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- PrepaidDiscount -->
+                    <div style="background: linear-gradient(135deg, #FCE7F3 0%, #FBCFE8 100%); padding: 25px; border-radius: 15px; border-left: 5px solid #EC4899; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div>
+                                <div style="font-size: 1.3rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 5px;">PrepaidDiscount</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">Manual • Fixed amount • None</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 2rem; font-weight: 800; color: #EC4899;">₹1,05,315</div>
+                                <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 5px;">13.6% of discount sales</div>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 10px; background: rgba(236, 72, 153, 0.2); border-radius: 10px; overflow: hidden;">
+                            <div style="width: 28.9%; height: 100%; background: #EC4899; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Back25 -->
+                    <div style="background: linear-gradient(135deg, #F3E8FF 0%, #E9D5FF 100%); padding: 25px; border-radius: 15px; border-left: 5px solid #A855F7; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div>
+                                <div style="font-size: 1.3rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 5px;">Back25</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">Discount code • Fixed amount • None</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 2rem; font-weight: 800; color: #A855F7;">₹64,717</div>
+                                <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 5px;">8.4% of discount sales</div>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 10px; background: rgba(168, 85, 247, 0.2); border-radius: 10px; overflow: hidden;">
+                            <div style="width: 17.8%; height: 100%; background: #A855F7; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Stats -->
+                <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="background: var(--accent-blue); padding: 25px; border-radius: 15px; text-align: center;">
+                        <div style="font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Total Discount Sales</div>
+                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-dark);">₹7,72,216</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px;">From 5 active discount codes</div>
+                    </div>
+
+                    <div style="background: var(--accent-green); padding: 25px; border-radius: 15px; text-align: center;">
+                        <div style="font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">% of Total Revenue</div>
+                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--success);">65.0%</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px;">Discount-driven purchases</div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); padding: 25px; border-radius: 15px; text-align: center;">
+                        <div style="font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Top Performing Code</div>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--warning);">Welcome10</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px;">₹3.6L+ in sales</div>
+                    </div>
+                </div>
+
+                <!-- Insights Box -->
+                <div style="background: linear-gradient(135deg, var(--accent-rose) 0%, #FFE5E5 100%); padding: 25px; border-radius: 12px; margin-top: 30px; border: 2px solid #f87171;">
+                    <h4 style="font-weight: 700; margin-bottom: 15px; color: #dc2626;">💡 Discount Strategy Insights</h4>
+                    <ul class="styled-list" style="margin: 0;">
+                        <li><strong>Welcome10 Dominance:</strong> New customer acquisition code drives 47.2% of all discount sales, indicating strong first-purchase incentive effectiveness</li>
+                        <li><strong>High Discount Dependency:</strong> 65% of revenue coming from discounted sales suggests potential margin pressure and need for full-price value proposition strengthening</li>
+                        <li><strong>Code Proliferation:</strong> Five active discount codes may be diluting brand value. Consider consolidating to 2-3 strategic codes</li>
+                        <li><strong>Opportunity:</strong> Test reducing discount depth (10-15% vs 20-30%) to improve margins while maintaining conversion rates</li>
+                        <li><strong>November Action:</strong> A/B test non-discount value propositions (free shipping, gift with purchase) to reduce discount reliance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Key Challenges & Concerns</h2>
+                <p class="section-subtitle">Critical issues requiring immediate attention and strategic resolution</p>
+            </div>
+
+            <div class="insights-grid">
+                <div class="insight-card challenge-card">
+                    <div class="insight-title">
+                        <span class="insight-icon">🚨</span>
+                        Returns & Cancellations Crisis
+                    </div>
+                    <div class="insight-content">
+                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--danger); margin: 15px 0;">15.45%</div>
+                        <p style="margin-bottom: 15px;"><strong>Critical Impact:</strong> Significant revenue leakage reducing actual ROAS and creating customer satisfaction concerns.</p>
+                        <p style="margin-bottom: 10px;"><strong>Breakdown:</strong></p>
+                        <ul style="margin-left: 20px; margin-bottom: 15px;">
+                            <li>Majority: Returns (primary contributor)</li>
+                            <li>Minority: Cancellations</li>
+                        </ul>
+                        <p style="margin-bottom: 10px;"><strong>Suspected Root Causes:</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>RTO issues with shipping/logistics</li>
+                            <li>Fake delivery attempts</li>
+                            <li>Product expectation mismatch</li>
+                            <li>Size/fit issues with jewellery</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="insight-card" style="border-left-color: var(--warning); background: linear-gradient(135deg, #FEF3C7 0%, #FEE 100%);">
+                    <div class="insight-title" style="color: var(--warning);">
+                        <span class="insight-icon">💰</span>
+                        AOV Improvement Gap
+                    </div>
+                    <div class="insight-content">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin: 15px 0;">
+                            <div>
+                                <div style="font-size: 1.1rem; color: var(--text-secondary);">September</div>
+                                <div style="font-size: 2rem; font-weight: 800; color: var(--text-primary);">₹1,400</div>
+                            </div>
+                            <div style="font-size: 2rem; color: var(--primary-gold);">→</div>
+                            <div>
+                                <div style="font-size: 1.1rem; color: var(--text-secondary);">October</div>
+                                <div style="font-size: 2rem; font-weight: 800; color: var(--success);">₹1,650</div>
+                            </div>
+                            <div style="background: var(--accent-green); padding: 10px 15px; border-radius: 10px;">
+                                <div style="font-size: 1.5rem; font-weight: 800; color: var(--success);">+17.9%</div>
+                            </div>
+                        </div>
+                        <p style="margin-bottom: 15px;"><strong>Progress Made:</strong> Positive momentum with ₹250 increase in AOV month-over-month.</p>
+                        <p><strong>Gap Analysis:</strong> Further AOV increase to ₹1,800+ is essential to elevate overall ROAS to 2.5x+ range, improve profit margins, and offset ad cost inflation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 30px;">
+                <div class="card-title">
+                    <span class="card-icon">🔧</span>
+                    Immediate Action Required
+                </div>
+
+                <div class="recommendation-list">
+                    <div class="recommendation-item" style="border-left-color: var(--danger);">
+                        <div class="recommendation-number" style="background: var(--danger);">1</div>
+                        <div class="recommendation-content">
+                            <h4>Launch Returns Investigation Task Force</h4>
+                            <p>Immediate deep-dive into return reasons by product category, courier partner performance audit, and customer feedback analysis. 15.45% return rate is unsustainable for profitability.</p>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-item" style="border-left-color: var(--warning);">
+                        <div class="recommendation-number" style="background: var(--warning);">2</div>
+                        <div class="recommendation-content">
+                            <h4>Enhance Product Content & Quality Checks</h4>
+                            <p>Improve product photography with detailed shots, enhance size guides and descriptions, implement stricter quality control, and consider pre-delivery confirmation calls for high-value orders.</p>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-item" style="border-left-color: var(--primary-gold);">
+                        <div class="recommendation-number" style="background: var(--primary-gold);">3</div>
+                        <div class="recommendation-content">
+                            <h4>Continue AOV Enhancement Strategy</h4>
+                            <p>Target ₹1,800+ AOV through bundle offerings, strategic product recommendations, cart value optimization campaigns, and continued emphasis on proven high-value products.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- November Projections -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">November Projections & Strategy</h2>
+                <p class="section-subtitle">Forward-looking targets and strategic priorities for sustainable growth</p>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🎯</span>
+                    November 2025 Targets
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>October Actual</th>
+                            <th>November Target</th>
+                            <th>Change</th>
+                            <th>Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Spend</strong></td>
+                            <td>₹5,26,822</td>
+                            <td>₹5,04,000</td>
+                            <td><span style="color: var(--danger);">-4.3%</span></td>
+                            <td>Efficiency optimization</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Orders</strong></td>
+                            <td>721</td>
+                            <td>711</td>
+                            <td><span style="color: var(--warning);">-1.4%</span></td>
+                            <td>Maintain volume</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Revenue</strong></td>
+                            <td>₹11,87,043</td>
+                            <td>₹12,33,569</td>
+                            <td><span style="color: var(--success);">+3.9%</span></td>
+                            <td>AOV increase focus</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROAS</strong></td>
+                            <td>2.25x</td>
+                            <td>2.45x</td>
+                            <td><span style="color: var(--success);">+8.9%</span></td>
+                            <td>Improved efficiency</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AOV</strong></td>
+                            <td>₹1,650</td>
+                            <td>₹1,735</td>
+                            <td><span style="color: var(--success);">+5.2%</span></td>
+                            <td>Premium products push</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="background: var(--accent-green); padding: 25px; border-radius: 12px; margin-top: 30px;">
+                    <h4 style="font-weight: 700; margin-bottom: 15px; color: var(--primary-dark);">Strategic Rationale</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        November targets focus on efficiency over volume growth. By optimizing spend (-4.3%) while improving ROAS (+8.9%) through better audience targeting and AOV enhancement, we aim to increase revenue (+3.9%) with higher profitability. This conservative approach allows us to address returns issues while maintaining business momentum.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🚀</span>
+                    Strategic Priorities for November
+                </div>
+
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="switchTab('immediate')">Immediate Actions</button>
+                        <button class="tab-button" onclick="switchTab('shortterm')">Short-term Initiatives</button>
+                        <button class="tab-button" onclick="switchTab('longterm')">Long-term Strategy</button>
+                    </div>
+
+                    <div id="immediate" class="tab-content active">
+                        <div class="recommendation-list">
+                            <div class="recommendation-item">
+                                <div class="recommendation-number">1</div>
+                                <div class="recommendation-content">
+                                    <h4>Address Returns Crisis (Week 1-2)</h4>
+                                    <p>Launch comprehensive investigation: analyze return reasons by category, audit courier partners, implement customer feedback loops, and establish quality checkpoints.</p>
+                                </div>
+                            </div>
+
+                            <div class="recommendation-item">
+                                <div class="recommendation-number">2</div>
+                                <div class="recommendation-content">
+                                    <h4>Scale Top Performers (Week 1)</h4>
+                                    <p>Increase retargeting budget by 20%, launch dedicated campaigns for Polki Chakra Choker and Green Quartz Necklace, expand proven creative variations.</p>
+                                </div>
+                            </div>
+
+                            <div class="recommendation-item">
+                                <div class="recommendation-number">3</div>
+                                <div class="recommendation-content">
+                                    <h4>Tighten Budget Efficiency (Week 1-2)</h4>
+                                    <p>Pause all consistently underperforming ad sets (bottom 30%), reallocate saved budget to proven winners, implement stricter ROI thresholds for new tests.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="shortterm" class="tab-content">
+                        <div class="recommendation-list">
+                            <div class="recommendation-item">
+                                <div class="recommendation-number">4</div>
+                                <div class="recommendation-content">
+                                    <h4>Enhanced Product Strategy (Week 3-4)</h4>
+                                    <p>Review high-AOV product portfolio, consider seasonal product focus for November, test product bundling strategies for AOV increase to ₹1,800+.</p>
+                                </div>
+                            </div>
+
+                            <div class="recommendation-item">
+                                <div class="recommendation-number">5</div>
+                                <div class="recommendation-content">
+                                    <h4>Creative Development Sprint (Week 2-4)</h4>
+                                    <p>Produce 5-7 new creative variations, test video content vs static images, implement user-generated content (UGC) strategy with customer testimonials.</p>
+                                </div>
+                            </div>
+
+                            <div class="recommendation-item">
+                                <div class="recommendation-number">6</div>
+                                <div class="recommendation-content">
+                                    <h4>Customer Experience Enhancement (Week 3-4)</h4>
+                                    <p>Improve product descriptions and sizing guides, consider virtual try-on implementation, add customer reviews and testimonials prominently on product pages.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="longterm" class="tab-content">
+                        <div class="recommendation-list">
+                            <div class="recommendation-item">
+                                <div class="recommendation-number">7</div>
+                                <div class="recommendation-content">
+                                    <h4>Attribution Modeling (Month 2-3)</h4>
+                                    <p>Implement proper cross-platform attribution to measure Google's assisted conversions on Meta, optimize budget allocation based on true contribution and halo effects.</p>
+                                </div>
+                            </div>
+
+                            <div class="recommendation-item">
+                                <div class="recommendation-number">8</div>
+                                <div class="recommendation-content">
+                                    <h4>Loyalty & Retention Programs (Month 2-3)</h4>
+                                    <p>Develop repeat customer campaigns with exclusive offers, create VIP customer segment for premium products, implement email marketing for customer retention and lifecycle management.</p>
+                                </div>
+                            </div>
+
+                            <div class="recommendation-item">
+                                <div class="recommendation-number">9</div>
+                                <div class="recommendation-content">
+                                    <h4>Product Line Expansion (Month 3+)</h4>
+                                    <p>Once festive season data is complete, double down on proven winners, phase out persistent underperformers, develop product lines around bestsellers with variations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Mitigation -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Risk Factors & Mitigation</h2>
+                <p class="section-subtitle">Identifying potential challenges and proactive strategies to address them</p>
+            </div>
+
+            <div class="card">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Risk Factor</th>
+                            <th>Impact Level</th>
+                            <th>Probability</th>
+                            <th>Mitigation Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>High Returns Rate (15.45%)</strong></td>
+                            <td><span class="metric-badge badge-danger">Critical</span></td>
+                            <td>Current Issue</td>
+                            <td>Immediate operational audit, improved descriptions, quality checks, courier partner evaluation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Google Zero Conversions</strong></td>
+                            <td><span class="metric-badge badge-warning">Moderate</span></td>
+                            <td>High</td>
+                            <td>Reduce to minimal test budgets (≤₹15K), focus resources on Meta, scale only with proven ROI</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Creative Fatigue</strong></td>
+                            <td><span class="metric-badge badge-warning">Moderate</span></td>
+                            <td>Medium</td>
+                            <td>Aggressive creative refresh schedule, UGC integration, video content development</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Post-Festive Demand Drop</strong></td>
+                            <td><span class="metric-badge badge-warning">Moderate</span></td>
+                            <td>High</td>
+                            <td>Build retention strategy, diversify product appeal beyond festive, year-round collections</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Competition Intensity</strong></td>
+                            <td><span class="metric-badge badge-warning">Moderate</span></td>
+                            <td>Medium-High</td>
+                            <td>Focus on efficiency over spending, creative excellence, audience quality, unique positioning</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AOV Stagnation</strong></td>
+                            <td><span class="metric-badge badge-warning">Moderate</span></td>
+                            <td>Low-Medium</td>
+                            <td>Bundle strategies, premium product positioning, cart optimization, upsell/cross-sell tactics</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="section" style="background: linear-gradient(135deg, #f8f8f8 0%, white 100%);">
+        <div class="container">
+            <div class="card" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%); color: white; border: none;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; color: white;">Conclusion & Path Forward</h2>
+                
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; color: rgba(255,255,255,0.9);">
+                    October demonstrated <strong style="color: var(--primary-gold);">solid execution with 96.5% revenue target achievement</strong> despite facing significant headwinds from returns and cancellations. The strategic pivot towards retargeting-focused campaigns proved successful, while the introduction of LAL audiences shows promise for scalable growth.
+                </p>
+
+                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; margin: 30px 0; backdrop-filter: blur(10px);">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: var(--primary-gold);">Critical Focus Areas for November</h3>
+                    <div style="display: grid; gap: 15px;">
+                        <div style="display: flex; align-items: start; gap: 15px;">
+                            <div style="background: var(--primary-gold); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; color: var(--primary-dark);">1</div>
+                            <p style="margin: 0; color: rgba(255,255,255,0.9);"><strong>Solve the returns problem</strong> – 15.45% rate is unsustainable and eroding profitability</p>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 15px;">
+                            <div style="background: var(--primary-gold); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; color: var(--primary-dark);">2</div>
+                            <p style="margin: 0; color: rgba(255,255,255,0.9);"><strong>Continue AOV improvement</strong> trajectory towards ₹1,800+ through strategic product focus</p>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 15px;">
+                            <div style="background: var(--primary-gold); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; color: var(--primary-dark);">3</div>
+                            <p style="margin: 0; color: rgba(255,255,255,0.9);"><strong>Scale retargeting and proven audiences</strong> aggressively with 20% budget increase</p>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 15px;">
+                            <div style="background: var(--primary-gold); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; color: var(--primary-dark);">4</div>
+                            <p style="margin: 0; color: rgba(255,255,255,0.9);"><strong>Maintain creative testing discipline</strong> for long-term scalability and consistent performance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.9); margin-top: 25px;">
+                    The foundation is strong with proven Meta strategies and growing AOV. However, <strong style="color: var(--primary-gold);">operational excellence in fulfillment and logistics must match marketing performance</strong> to achieve sustainable profitability. November's success hinges on solving the returns crisis while scaling what works.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="report-footer">
+        <div class="footer-content">
+            <div class="brand-logo" style="font-size: 2rem; margin-bottom: 15px;">SHOP FUSIO</div>
+            <p style="font-size: 1.1rem; margin-bottom: 10px;">October 2025 Performance Marketing Report</p>
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Prepared by: Performance Marketing Team</p>
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px;">Next Review: December 6, 2025</p>
+            
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 25px; margin-top: 25px;">
+                <p class="footer-note">This report is confidential and intended for internal use only.</p>
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 15px;">
+                    © 2025 Shop Fusio. All data and insights are proprietary and confidential.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Switching Functionality
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Smooth scroll for anchor links (if any are added)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .platform-card, .insight-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Print functionality
+        function printReport() {
+            window.print();
+        }
+
+        // Add print button if needed
+        console.log('Shop Fusio Report Loaded Successfully');
+    </script>
+</body>
 </html>
+
